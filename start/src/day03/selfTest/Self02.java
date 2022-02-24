@@ -38,6 +38,22 @@ public class Self02 {
 		System.out.println("가로 : " + hight);
 		System.out.println("사각형 넓이 : " + (width * hight));
 		System.out.println("삼각형 넓이 : " + (width * hight * 0.5));	
+		
+		
+		
+		/*
+		 * 수정필요
+		 * String width = "가로";
+		JOptionPane.showInputDialog(null, width);
+		
+		String hight = "세로";
+		JOptionPane.showInputDialog(null, hight);
+		
+		int a = Integer.parseInt(width);
+		int b = Integer.parseInt(hight);
+		int ab = a * b;
+		JOptionPane.showMessageDialog(null, ab);
+		*/
 	}
 
 }
