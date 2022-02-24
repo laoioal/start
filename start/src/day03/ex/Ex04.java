@@ -13,19 +13,30 @@ package day03.ex;
 public class Ex04 {
 
 	public static void main(String[] args) {
+
 		double a = 365.2426;
-		double b = a - (int) a; //일
-		double c = b * 24; // 시간
-		double d = c * 60; // 분
-		double e = d * 60; // 초
+		int b = (int)a;
+		double c = a % 365;
+		double d =  c * 24; // 일을 시간으로 환산
+		
+		int e = (int) d;
+		double f = (d - e) * 60 ;
+		int g = (int) f;
+		
+		int h = (int)(f % g * 60);
 		
 		
-		System.out.println(c);
+		
+		
+		
+		
+	
+		
+		
 	
 	
 	
-	
-	System.out.println("365.2426일은 " + (int) a + "일 " + (int) c + "시간 " + (int) d + "분 " + "초 입니다.");
+	System.out.println("365.2426일은 " + b + "일 " + e + "시간 " + g + "분 "  + h + "초 입니다.");
 	
 	}
 

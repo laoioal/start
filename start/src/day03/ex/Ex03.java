@@ -45,7 +45,7 @@ public class Ex03 {
 		//tmp = tmp % 50000;
 		tmp %= 50000; // tmp를 50000으로 나눈 나머지를 tmp에 대입하세요
 		// 1만원권
-		int man = tmp / 100000;
+		int man = tmp / 10000;
 		
 		// 1만원권을 제외한 금액
 		tmp = tmp % 10000;
