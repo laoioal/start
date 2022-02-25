@@ -2,6 +2,21 @@ package day03.ex;
 
 import java.util.Scanner;
 
+//이렇게 사용할 클래스의 경로를 지정하면 java.util 패키지 하위에 속한 클래스만 사용할 준비를 하게 된다.
+//이 예제의 경우는 Scanner 를 사용할 예정인데 직접 * 대신 Scanner 로 명시해도 된다.
+
+//적용순서는 * 보다는 클래스 이름을 명시하는 방법을 우선 적용시킨다.
+
+/*
+ 	A - abcd.txt
+ 		efg.txt
+ 		
+ 	
+ 	B - abcd.txt
+ 		xyz.txt
+ */
+															
+
 /*
  	문제 2 ]
  		하나의 숫자를 입력받은 후(원의 반지름)
@@ -14,10 +29,34 @@ import java.util.Scanner;
 public class Ex02 {
 
 	public static void main(String[] args) {
-		Scanner abc = new Scanner(System.in); // 입력도구 준비
-		int cir = abc.nextInt(); // 반지름 입력
-		System.out.println("원의 넓이 : " + (cir * cir * 3.14)); // 원의 넓이
-		System.out.println("원의 넓이 : " + (cir * 2 * 3.14)); // 원의 둘레
+		// 할일
+		
+			// 입력도구 준비
+			Scanner sc = new Scanner(System.in);
+			// 입력받기전에 메세지 출력
+			System.out.print("반지름 : ");
+			// 입력받는다. 변수에 기억
+			int rad = sc.nextInt();
+			// 계산하고
+			double pi = 3.14;
+			// 원의 넓이 계산 : 숫자 데이터의 연산은 항상 큰 데이터 타입으로 결과가 나온다.
+			double area = rad * rad * pi;
+			// 원의 둘레 계산
+			double arround = 2 * rad * pi;
+			// 출력하고
+			System.out.println("반지름 : " + rad);
+			System.out.println("넓  이 : " + area); // 원의 넓이
+			System.out.println("둘  레 : " + arround); // 원의 둘레
+			
+			/*
+			 	참고 ]
+			 		형변환에서 큰 타입의 데이터를 작은 타입으로 변환하면
+			 		남는 부분은 버린다.
+			 */
+			int inArea = (int) area; 
+			int intDulae = (int) arround;
+			System.out.println(inArea);
+			System.out.println(intDulae);
 	}
 
 }

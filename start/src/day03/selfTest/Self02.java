@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 			세로 : xxxx
 			사각형 넓이 : xxxx
 			삼각형 넓이 : xxxx.xxx
+		
 			
 	참고 ]
 		자바에서 * 기호의 의미

@@ -13,30 +13,42 @@ package day03.ex;
 public class Ex04 {
 
 	public static void main(String[] args) {
-
-		double a = 365.2426;
-		int b = (int)a;
-		double c = a % 365;
-		double d =  c * 24; // 일을 시간으로 환산
+		// 할일
+		// 데이터 변수에 기억
+		double total = 365.2426;
+		// 누적 계산될 변수 만들기
+		double tmp = total;
+		// 날수 구하고 --> 누적 변수에 계산해서 업데이트
+		int day = (int) tmp;
+		tmp = tmp - day;
+		// tmp -= day;
 		
-		int e = (int) d;
-		double f = (d - e) * 60 ;
-		int g = (int) f;
+		// 0.2426을 초로 변환한다.
+			// 1 * 24 ==> 하루의 시간
+			// 0.5 * 24 ==> 하루의 절반 시간
+			// 0.1 * 24 ==> 0.1일의 시간
+		int tsec = (int) (0.2426 * 24 * 60 * 60);
 		
-		int h = (int)(f % g * 60);
+		// 시간 구하고 --> 누적 변수에 계산해서 업데이트
+		int hour = tsec / 60 / 60;
 		
+		tsec = tsec % (60 * 60);
+		// tsec %= 3600
 		
+		// 분 구하고 --> 누적 변수에 계산해서 업데이트
+		int min = tsec /60;
+		tsec = tsec % 60;
 		
+		// 초 구하고 
+		int sec = tsec;
 		
+		// 출력하고
+		System.out.println("1 년은 " + total + " 일이고");
+		System.out.println("이것은 " + day + " 일");
+		System.out.println("       " + hour + " 시간");
+		System.out.println("       " + min + " 분");
+		System.out.println("       " + sec + " 초이다.");
 		
-		
-	
-		
-		
-	
-	
-	
-	System.out.println("365.2426일은 " + b + "일 " + e + "시간 " + g + "분 "  + h + "초 입니다.");
 	
 	}
 
