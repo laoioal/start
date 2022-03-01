@@ -30,7 +30,7 @@ public class Test05 {
 			//() ? () : ();	형식 만들고 채워나가세요.
 		
 			// 출력하고
-		System.out.println("1 ~ 25 사이의 랜덤하게 발생된 숫자 " + no + " 는" + result + " 입니다.");
+		System.out.println("1 ~ 25 사이의 랜덤하게 발생된 숫자 " + no + " 는 " + result + " 입니다.");
 	}
 
 }

@@ -1,7 +1,7 @@
 package day04.ex;
 
 /*
- 	1.
+ 	1
   	알파벳을 입력받아서
   	그 문자가 대문자인지 소문자인지를 판별하는 프로그램을 작성하세요
   
@@ -11,7 +11,7 @@ package day04.ex;
 
 import java.util.*;
 
-public class Ex0201 {
+public class Ex02_01 {
 
 	public static void main(String[] args) {
 		// 할일
