@@ -18,7 +18,7 @@ package ex;
 public class Ex15 {
 
 	public static void main(String[] args) {
-		
+		/*
 		int a = 2;
 		int b = 1;
 		int k = 1;
@@ -32,13 +32,10 @@ public class Ex15 {
 				System.out.print("\n");
 				a = 2;
 				b = k + 1;
-			
 		
 			}
 		}
-		
-			
-		}
+	}
 		
 		 a = 6;
 		 b = 1;
@@ -54,17 +51,10 @@ public class Ex15 {
 				a = 6;
 				b = k + 1;
 			
-		
 			}
 		}
-		
-			
-		}
-		
-		
-		
-		
-		
+	}
+*/
 		
 		
 

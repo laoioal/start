@@ -66,7 +66,6 @@ public class Ex06 {
 		}
 		while (num != a) ;
 		System.out.println("동일합니다.");
-		
 	
 		
 

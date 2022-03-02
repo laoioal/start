@@ -13,13 +13,16 @@ package ex;
 		3 X 2 = 6		5 X 2 = 10		7 X 2 = 14		 9 X 2 = 18
 		...
 		3 X 9 = 9		5 X 9 = 45		7 X 9 = 63		 9 X 9 = 81
+		
+		주의 ]
+			카운터 변수의 사용 위치가 정해져 있는 것은 아니다.
 */
 
 public class Ex16 {
 
 	public static void main(String[] args) {
 		
-
+/*
 		int i = 2;
 		int j = 1;
 	
@@ -89,7 +92,27 @@ public class Ex16 {
 				}		
 		}
 		}
-	
+	*/
+		
+		
+		for(int i = 0; i < 2; i++) {
+			
+			for(int j = 0; j < 9; j++) {
+				
+				for(int k = 0; k < 4; k++) {
+					int dan = 2 * k + 2 + i;
+					int gop = j + 1;
+					
+					// 출력
+					System.out.print(dan + " X " + gop + " = " + (dan * gop) + "\t" );
+					
+				}
+				System.out.println();
+			}
+			
+			System.out.println();
+		}
+		
 		
 	}
 }
