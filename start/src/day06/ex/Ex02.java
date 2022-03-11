@@ -13,6 +13,25 @@ package day06.ex;
 public class Ex02 {
 	
 	public static void main(String[] args) {
+		double a = 0.54;
+		double b = 1.07;
+		double c = 7564;
+		double d = 0;
+		double e = 0;
+		int i = 0;
+		int time = 0;
+		for(i = 0; i < c / a; i ++) {
+			 d = (a * i);
+			 e = c - (b * i);
+			 if(d > e) {
+					System.out.println(i);
+					break;
+			}
+		
+		}
+		time = i / 60;
+		System.out.println( time + "분 " + (i - (time * 60)) + "초" );
+		
 		
 	}
 

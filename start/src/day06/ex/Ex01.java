@@ -24,15 +24,23 @@ public class Ex01 {
 		System.out.print("3 ~ 100 사이의 수를 입력해주세요 : ");
 		int a = sc.nextInt();
 		int num = 0;
+		String b = "소수가 아닙";
 		
 		//소수를 구분한다.
 		
-		for(int i = a; i > 1; i--) {
-			if(a % i !=0) {
-				
-			}
+		for(int i = a; i > 0; i--) {
+			if(a % i == 0) {
+				num += 1;
+			}			
 		}
-
+		if(num == 2) {
+			b = "소수입";
+			System.out.println("입력한 숫자 : " + a + " 는 " + b + "니다.");
+		} else {
+			System.out.println("입력한 숫자 : " + a + " 는 " + b + "니다.");
+		}
 	}
 
 }
+
+
