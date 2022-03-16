@@ -27,7 +27,7 @@
 		배열주소.length
  		
  7. 배열 깊은 복사 - day 08 (test 04)
- System.arratcopy(#1, #2, #3, #4, #5);
+ System.arraycopy(#1, #2, #3, #4, #5);
 				
 					#1	-	원본배열의 주소
 					#2	-	원본배열의 복사를 시작할 위치 

@@ -1,6 +1,6 @@
 package day13.ex;
 
-public class Ex01 {
+public class Ex02 {
 	
 	/*
 	 	String[] arr = {"123" , "465", "789", ..};
@@ -12,11 +12,12 @@ public class Ex01 {
 	 		1. 배열의 범위를 벗어나서 사용하는 경우
 	 		2. 숫자로 변환이 불가능한 경우
 	 		3. 평균을 계산하는데 0으로 나누는 경우
+	 		4. 위의 세가지 이외의 경우 ...
 	 */
 
 	String[] arr = {"123" , "456", "789" , "0-="};
 	
-	public Ex01() {
+	public Ex02() {
 		getSum();
 	}
 
@@ -24,13 +25,18 @@ public class Ex01 {
 		int num = 0;
 		int sum = 0;
 		double avg = 0;
-		
 		for(int i = 0; i < arr.length; i++) {
 			try {
 				int a = Integer.parseInt(arr[i]);
 				sum += a;
-				
-			} catch(Exception e) {
+			
+			} catch(ArrayIndexOutOfBoundsException e) {
+				num = i;
+				break;
+			} catch(NumberFormatException e) {
+				num = i;
+				break;
+			} catch(ArithmeticException e) {
 				num = i;
 				break;
 			} 
@@ -48,7 +54,7 @@ public class Ex01 {
 	
 	
 	public static void main(String[] args) {
-		new Ex01();
+		new Ex02();
 	}
 
 }

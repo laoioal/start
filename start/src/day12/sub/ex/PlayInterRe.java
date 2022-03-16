@@ -9,6 +9,7 @@ public class PlayInterRe {
 	int[] arr = new int[10];
 	
 	int k = 0;
+	int[] rank = new int[10];
 	
 	
 	
@@ -38,7 +39,7 @@ public class PlayInterRe {
 				in[i] = new Inter() {
 					int ra;
 					int score;
-					int[] rank = new int[10];
+					
 					
 					
 					// 총점 구하기
@@ -64,9 +65,9 @@ public class PlayInterRe {
 		
 								}
 							}
-							/*for(int k : arr) {
+							for(int k :rank) {
 								System.out.println(k);
-							}*/
+							}
 						}
 
 					@Override
