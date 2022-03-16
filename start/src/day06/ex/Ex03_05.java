@@ -11,25 +11,30 @@ package day06.ex;
 public class Ex03_05 {
 
 	public static void main(String[] args) {
-	
-		int k = 0;
+		int k = 1;
+
 		for(int i = 0; i < 5; i++) {
 			
-			k++;
-			for(int j = 0; j < i + 1; j++) {
-				int b = i + k ;
-				int c = i + j ;
-				int t = b + c;
-		
-						
+			for(int j = 0; j < 5; j++) {
 				
 				
-				System.out.print(t + "\t");
+				if(i >= j) {
+				int sum = i + k + j;
+				System.out.print(sum + "\t");
+				}
+				
+				
+				
 				
 			}
-			System.out.println();
+			
+			
+			
+			System.out.println();		
+			k = k + i;
+			
 		}
-
+		
 	}
 
 }
