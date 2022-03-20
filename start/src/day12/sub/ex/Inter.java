@@ -5,6 +5,6 @@ public interface Inter {
 	public void setTotal();
 	
 	public void toPrint();
-	public void setRank();
+
 
 }

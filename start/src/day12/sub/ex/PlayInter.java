@@ -34,7 +34,7 @@ public class PlayInter {
 						@Override
 					public void setTotal() {
 						score = no1 + no2 + no3;
-						ra[j] = score;
+						
 					}
 						
 
@@ -46,11 +46,7 @@ public class PlayInter {
 					}
 
 
-					@Override
-					public void setRank() {
-						// TODO Auto-generated method stub
-						
-					}
+				
 				};
 				
 		}
