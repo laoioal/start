@@ -26,6 +26,11 @@ public class Test04 {
 		if(mat.find()) {
 			String hp = mat.group();
 			
+			/*
+			 	sdlfjklsdfskldfj가나다asjflsdlfj // 정규표현식에 맞는 표현이 있는지를 확인하는 함수, matches() 함수는 표현식이 맞는지를 보는 함수로 보통 이 함수를 사용한다. 
+			 */
+			
+			
 			// 출력
 			System.out.println("전화번호 : " + hp);
 		}
