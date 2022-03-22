@@ -4,7 +4,7 @@ package day17;
 import java.io.*;
 
 /*
- 	파일에 내용을 정장하는 프로그램을 만들어보자
+ 	파일에 내용을 저장하는 프로그램을 만들어보자
  */
 public class Test01 {
 
