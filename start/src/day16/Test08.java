@@ -17,7 +17,7 @@ public class Test08 {
 		
 		FileInputStream fin = null;
 		try {
-			fin = new FileInputStream("src/day16/data.txt");
+			fin = new FileInputStream("src/day16/data_ko.txt");
 			// 여기 경로는 전체 절대 경로를 사용해도 된다.
 			// 이클립스 안에 데이터를 만들면 이것은 이클립스 자신이 경로를 새롭게 정해서 처리하므로
 			// 위 규칙을 따르면 된다.
