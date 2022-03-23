@@ -72,7 +72,7 @@ public class PlayInterRe {
 		
 
 	}
-	
+	/*  day12.sub.ex.self - StudentPlay에 다시 작성
 	public void setRank() {
 		setData();
 		for(int i = 0; i < in.length; i++) {
@@ -85,6 +85,7 @@ public class PlayInterRe {
 			}
 		}
 	}
+	*/
 
 	
 	public static void main(String[] args) {
