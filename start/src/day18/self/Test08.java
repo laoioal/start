@@ -42,7 +42,11 @@ public class Test08 {
 			
 			
 			while(true) {
-				
+				String str = br.readLine();
+				if(str == null) {
+					break;
+				}
+				System.out.println(str + "\r\n");
 			}
 			
 			

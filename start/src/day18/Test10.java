@@ -53,9 +53,7 @@ class Euns implements Runnable {
 	}
 	
 	public void answer() {
-		for(int i = 0; i < 1000; i++) {
-			System.out.println("\t\t\t### 선생님이 " + (i + 1) + " 번째 대답을 합니다.");
-		}
+
 	}
 	
 }
