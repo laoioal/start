@@ -23,7 +23,7 @@ public class PingClient01 {
 		
 		try {
 			// Socket을 만들면 자동적으로 상대방과 접속이 이루어진다.
-			socket = new Socket("180.228.75.2", 800);
+			socket = new Socket("180.228.75.2", 8000);
 			/*
 			 	포트번호는 접속받는 프로그램에서 지정한 번호여야 한다.
 			 	
