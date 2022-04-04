@@ -13,7 +13,7 @@ public class PingServer01 {
 		// 대표전화(접속만 받는 전화기)를 만들어 놓는다.
 		ServerSocket server = null;
 		try {
-			server = new ServerSocket(800);
+			server = new ServerSocket(7777);
 			// 7777 번으로 접속을 요청하는 것을 받을 준비를 한다.
 			
 			while(true) {
