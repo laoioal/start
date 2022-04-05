@@ -1,0 +1,58 @@
+0405 java보강
+
+이름중 XXXXa(i)ble 붙은 것들은 거의 인터페이스로 만들어져있다.
+
+이름에 ****Adapter가 붙은 클래슨느 추상 클래스
+
+인터페이스는 사용하려면 스스로 인스턴스를 만들수 없기 때문에
+반드시 상속시켜준 클래스를 인스턴스로 만들어서 받아써야 한다.
+
+public interface Inter01 {
+	void abc();
+}
+
+
+public class UseInter {
+	public void xyz(Inter01 in){
+	}
+	
+	
+	public void text() {
+	
+		IntetClass in 01 = new InterClass();
+		Inter01 inTarget = in01;
+		xyz(in01)
+		
+		무명 ==> xyz(new Inter01(){
+			@Override
+			public void abc() {
+				내용
+			}
+		
+		});
+	}
+
+}
+
+public class InterClass implements Inter01 {
+	@Override
+	public void abc() {
+		내용
+	}
+}
+
+=====================================================================================================
+
+public static void main(String[] args) {
+	Test t1 = new Test();
+	
+	
+}
+======================================================================================================
+
+함수(Function, Method)
+기능
+	f(x, y) = 2x + 3y
+	f(2, 5) = 2*2 + 3*5 => 19
+	f(2, 5) = 19
+	
