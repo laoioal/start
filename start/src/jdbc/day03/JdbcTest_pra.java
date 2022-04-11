@@ -2,6 +2,9 @@ package jdbc.day03;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
+
+import jdbc.sql.EmpSQL;
+
 import java.text.*;
 /*
  	emp 테이블의 데이터를 조회하는데
@@ -115,7 +118,7 @@ public class JdbcTest_pra {
 		// 입력받을 준비
 		Scanner sc = new Scanner(System.in);
 		// 메세지 출력
-		System.out.print("부서번호 조회 : dno\n직급으로 조회 : job\n모든사원 조회 : all\n명령입력 : ");
+		System.out.print("부서번호 조회 : dno\n직급으로 조회 : job\n모든사원 조회 : all\n프로그램 종료 : exit\n명령입력 : ");
 		
 		String str = sc.nextLine();
 		
@@ -130,6 +133,9 @@ public class JdbcTest_pra {
 			
 		case "all" :
 			getAll();
+			break;
+		case "exit":
+			System.out.println("*** 프로그램을 종료합니다. ***");
 			break;
 		}
 	}
@@ -147,7 +153,7 @@ public class JdbcTest_pra {
 			
 			// 질의명령 준비하고
 			String sql = getSQL(SEL_ALL);
-			
+
 			// 명령전달 도구 준비하고
 			stmt = con.createStatement();
 

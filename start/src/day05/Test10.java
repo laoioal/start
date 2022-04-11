@@ -10,6 +10,7 @@ public class Test10 {
 			//++no;
 		} while(++no < 10);
 			
+		
 	
 
 	}
