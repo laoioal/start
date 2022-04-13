@@ -66,6 +66,13 @@ public class EmpSQL {
 			buff.append("FROM ");
 			buff.append("	dept ");
 			break;
+		case SEL_DEPTLIST:
+			buff.append("SELECT ");
+			buff.append("		deptno, dname ");
+			buff.append("FROM ");
+			buff.append("	dept ");
+			break;
+			
 		}
 		
 		return buff.toString();

@@ -2,6 +2,7 @@ package empProj.controller;
 
 import java.util.*;
 
+import empProj.deptno.EmpView1;
 import empProj.view.*;
 
 /*
@@ -14,15 +15,17 @@ import empProj.view.*;
 
 public class EmpController02 {
 	private EmpView view;
+	private EmpView1 view1;
 	
 	public EmpController02() {
 		view = new EmpView();
+		view1 = new EmpView1();
 		
 		Scanner sc = new Scanner(System.in);
 		
 		while(true) {
 			// 메세지 출력하고
-			System.out.print("부서번호로 조회 : dno\n직급으로 조회 : job\n모든사원조회 : all\n프로그램 종료 : exit\n명령 입력 : ");
+			System.out.print("부서번호로 조회 : dno\n직급으로 조회 : job\n모든사원조회 : all\n사원번호 조회 : eno\n프로그램 종료 : exit\n명령 입력 : ");
 			String str = sc.nextLine();
 			System.out.println();
 			
@@ -36,6 +39,8 @@ public class EmpController02 {
 			case "all":
 				view.allPrint();
 				break;
+			case "eno":
+				view1.enoinfoprint(sc);
 			case "exit":
 				sc.close();
 				System.out.println("*** 프로그램을 종료합니다. ***");

@@ -76,6 +76,7 @@ public class EmpDao {
 				// VO가 완성이 됬으므로 list 에 채워준다.
 				list.add(eVO);
 			}
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
