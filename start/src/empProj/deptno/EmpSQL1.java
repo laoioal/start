@@ -34,6 +34,7 @@ public class EmpSQL1 {
 			buff.append("	emp ");
 			buff.append("WHERE ");
 			buff.append("	empno = ? ");
+			break;
 		case SEL_ENO:
 			buff.append("SELECT ");
 			buff.append("	empno, ename ");

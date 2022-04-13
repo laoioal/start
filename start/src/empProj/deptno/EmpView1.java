@@ -8,7 +8,7 @@ public class EmpView1 {
 	private EmpSQL1 eSQL;
 	
 	public EmpView1() {
-	eSQL = new EmpSQL1();
+		eSQL = new EmpSQL1();
 	}
 	
 	// 모든사원번호 이름 출력함수
