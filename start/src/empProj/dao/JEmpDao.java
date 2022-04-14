@@ -121,5 +121,98 @@ public class JEmpDao {
 		
 	}
 	
+	// 가장 최근 입사한 사원의 정보 조회 전담 처리함수
+	public EmpVO getLast(){
+		// 할일
+		// 반환값변수 만들고
+		EmpVO eVO = new EmpVO();
+		
+		// 커넥션 꺼내오고
+		con = db.getCON();
+		
+		// 질의명령 가져오고
+		String sql = jSQL.getSQL(jSQL.SEL_LAST);
+		
+		// 명령전달도구 가져오고
+		stmt = db.getSTMT(con);
+		try {
+			// 질의명령 보내고 결과 받고
+			rs = stmt.executeQuery(sql);
+		
+			// 꺼내서 VO 채워주고
+			// 가상 레코드포인터 한줄 내리고 
+		rs.next();
+		eVO.setEno(rs.getInt("eno"));
+		eVO.setEname(rs.getString("name"));
+		eVO.setJob(rs.getString("job"));
+		eVO.setHdate(rs.getDate("hdate"));
+		eVO.setHtime(rs.getTime("hdate"));
+		eVO.setSdate();
+		eVO.setDno(rs.getInt("dno"));
+		
+		
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(stmt);
+			db.close(con);
+		}
+		// 데이터 반환
+		return eVO;	
+	}
+	
+	// 30번 사원들 백업 전담 처리함수
+	public int backupDno30() {
+		// 반환값 변수
+		int cnt = 0;
+		
+		// 할일
+		// 커넥션 꺼내오고
+		db.getCON();
+		// 질의명령 가져오고
+		String sql = jSQL.getSQL(jSQL.INSERT_JEMP_D30);
+		// 명령전달도구 준비하고
+		stmt = db.getSTMT(con);
+		try {
+			// 질의명령 보내고 결과받고
+			cnt = stmt.executeUpdate(sql);
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(stmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	
+	
+	// 30번부서원 삭제 전담 처리함수
+	public int delDno30() {
+		// 반환값 변수 만들고
+		int cnt = 0;
+		// 할일
+		// 커넥션 꺼내오고
+		con = db.getCON();
+		
+		// 질의명령 가져오고
+		String sql = jSQL.getSQL(jSQL.DEL_JEMP_D30);
+		
+		// 명령전달도구 가져오고
+		stmt = db.getSTMT(con);
+		
+		try {
+			// 질의명령 보내고 결과 받고
+			cnt = stmt.executeUpdate(sql);
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(stmt);
+			db.close(con);
+		}
+		return cnt;
+	}
 	
 }
