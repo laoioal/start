@@ -108,7 +108,7 @@ public class JEmpDao {
 			cnt = pstmt.executeUpdate();
 			
 			/*
-			 	executeIpdate() 는 반환값 타입이 int이고
+			 	executeupdate() 는 반환값 타입이 int이고
 			 	반환값의 의미는 테이블의 변경된 행수를 의미한다.
 			 */
 		} catch(Exception e) {
@@ -170,7 +170,7 @@ public class JEmpDao {
 		
 		// 할일
 		// 커넥션 꺼내오고
-		db.getCON();
+		con = db.getCON();
 		// 질의명령 가져오고
 		String sql = jSQL.getSQL(jSQL.INSERT_JEMP_D30);
 		// 명령전달도구 준비하고

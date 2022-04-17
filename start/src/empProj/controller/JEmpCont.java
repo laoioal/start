@@ -22,8 +22,8 @@ public class JEmpCont {
 		} else if(cnt == 1) {
 			System.out.println("*** 테이블이 잘 준비되어있습니다.");
 		}
-		
 		delD30();
+		
 	
 	}
 	
