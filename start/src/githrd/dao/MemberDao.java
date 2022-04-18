@@ -21,7 +21,7 @@ public class MemberDao {
 	public MemberDao() {
 		db = new JenyJDBC();
 		mSQL = new MemberSQL();
-		
+	
 		/*
 		con = db.getCon();
 		System.out.println("### 커넥션 꺼내오기 성공 ###");
@@ -151,8 +151,9 @@ public class MemberDao {
 			System.out.println("아이디 : [" + str1 + "] 고객님의 연락처가 [" + str2 + "]로 변경되었습니다.");
 		}
 	}
-	
-	
+
+//-------------------회원 추가 함수 scanner 제외 후 다시 작성-----------------------------------------------------------
+/*	
 	// 회원 추가할 함수
 	public int insertMem() {
 		int cnt = 0;
@@ -186,7 +187,7 @@ public class MemberDao {
 	// 추가할 회원 입력하는 함수
 	public ArrayList<MemberVO> insert() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("1을 입력하면 회원정보 입력란으로 이동합니다.");
+		System.out.println("회원정보를 입력하시려면 아무키나 눌러주세요.");
 		String str = sc.nextLine();
 		String gen = null;
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
@@ -265,6 +266,8 @@ public class MemberDao {
 		}
 		return list;
 	}
+
+	
 	
 	// 회원추가 성공여부 출력
 	public void insertMemToPrint() {
@@ -275,5 +278,121 @@ public class MemberDao {
 			System.out.println("회원정보 입력이 실패하였습니다.");
 		}
 	}
+ */
+//-----------------------------------------------------------------------------------------------------------
+	// 회원 이름 추가함수
+	public ArrayList<MemberVO> setName(Scanner sc) {
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		MemberVO mVO = new MemberVO();
+		String name = sc.nextLine(); 
+		mVO.setName(name);
+		list.add(mVO);
+		return list;
+	}
+	// 회원 아이디 추가함수
+	public ArrayList<MemberVO> setId(Scanner sc) {
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		MemberVO mVO = new MemberVO();
+		String id = sc.nextLine(); 
+		mVO.setId(id);
+		list.add(mVO);
+		return list;
+	}
+	// 회원 비밀번호 추가함수
+	public ArrayList<MemberVO> setPw(Scanner sc) {
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		MemberVO mVO = new MemberVO();
+		String pw = sc.nextLine(); 
+		mVO.setPw(pw);
+		list.add(mVO);
+		return list;
+	}
+	// 회원 메일 추가함수
+	public ArrayList<MemberVO> setMail(Scanner sc) {
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		MemberVO mVO = new MemberVO();
+		String mail = sc.nextLine(); 
+		mVO.setMail(mail);
+		list.add(mVO);
+		return list;
+	}
+	// 회원 연락처 추가함수
+	public ArrayList<MemberVO> setTel(Scanner sc) {
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		MemberVO mVO = new MemberVO();
+		String tel = sc.nextLine(); 
+		mVO.setTel(tel);
+		list.add(mVO);
+		return list;
+	}
+	// 회원 성별 추가함수
+	public ArrayList<MemberVO> setGen(Scanner sc) {
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		MemberVO mVO = new MemberVO();
+		String gen = sc.nextLine(); 
+		mVO.setGen(gen);
+		list.add(mVO);
+		return list;
+	}
+	
+	public MemberVO setName1(Scanner sc) {
+		MemberVO mVO = new MemberVO();
+		String name = sc.nextLine();
+		mVO.setName(name);
+		return mVO;
+		
+	}
+	
+	// 회원 추가 함수
+	public int setMem(Scanner sc) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = mSQL.getSQL(mSQL.INSERT_MEM);
+		pstmt = db.getPstmt(con, sql);
+		int n = 0;
+
+		try {
+//			pstmt.setString(1, );
+			
+		} catch(Exception e) {
+			
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		return cnt;
+		
+	}
+	public ArrayList<MemberVO> setMem2(Scanner sc) {
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		MemberVO mVO = new MemberVO();
+		String name = null;
+		String id = null;
+		String pw = null;
+		String mail = null;
+		String tel = null;
+		String gen = null;
+		
+		while (true) {
+			name = sc.nextLine();
+			if(name != null) {
+				
+			}
+		}
+		
+		
+		
+		return list;
+	}
+	
+
+	
+/*
+		Pattern form1 = Pattern.compile("01[\\d]{1}-\\d{4}-\\d{4}");
+		Pattern form2 = Pattern.compile(".+@.+\\..+");
+		Pattern form3 = Pattern.compile("[F|M]");	
+ */
+	
 
 }	

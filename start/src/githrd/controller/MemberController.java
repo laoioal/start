@@ -1,6 +1,7 @@
 package githrd.controller;
 
 import java.util.ArrayList;
+import java.util.*;
 
 import githrd.dao.*;
 import githrd.vo.MemberVO;
@@ -12,13 +13,43 @@ public class MemberController {
 	
 	public MemberController() {
 		mDao = new MemberDao();
+		Scanner sc = new Scanner(System.in);
+		boolean bool = true;
+		
+		
+		while(bool) {
+		System.out.print("모든 회원의 회원번호 & 아이디 출력 : 1\n회원번호 입력하여 조회 : 2\n아이디 입력하여 회원 연락처 수정 : 3\n신규 회원가입 : 4\n종료 : 5\n요청번호를 입력해주세요 : ");
+		int no = sc.nextInt();
+		
+		switch(no) {
+		case 1 :
+			mDao.AllToprint();
+			break;
+		case 2 :
+			mDao.MnoToPrint();
+			break;
+		case 3 :
+			mDao.upDateTelToPrint();
+			break;
+		case 4 :
+			mDao.insertMemToPrint();
+			break;
+		case 5 :
+			System.out.println("프로그램 종료");
+			bool = false;
+			break;
+		}
+	}
+		
+		
+		
 	/*
 		mDao.AllToprint();
 		System.out.println("----------------");
 		mDao.MnoToPrint();
 		mDao.upDateTelToPrint();
-	 */
 		mDao.insertMemToPrint();
+	 */
 		
 	}
 
