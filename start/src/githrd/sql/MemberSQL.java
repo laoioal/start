@@ -1,6 +1,7 @@
 package githrd.sql;
 
 public class MemberSQL {
+	public final int ALL_MEM		= 1000;
 	public final int SEL_ALL		= 1001;
 	public final int SEL_MNO		= 1002;
 	public final int UP_TEL			= 2001;
@@ -11,6 +12,13 @@ public class MemberSQL {
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
 		switch(code) {
+		
+		case ALL_MEM:
+			buff.append("SELECT ");
+			buff.append("	mno, name, id, pw, mail, avt, gen, joindate ");
+			buff.append("FROM ");
+			buff.append("	member ");
+			break;
 		case SEL_ALL:
 			buff.append("SELECT ");
 			buff.append("	mno, id ");
