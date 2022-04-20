@@ -108,9 +108,20 @@ public class MemberDao {
 	// 회원번호 입력하면 해당 회원정보 출력해주는 함수
 	public void MnoToPrint(Scanner sc) {
 		System.out.println();
-		nameToPrint();
-		System.out.print("회원번호를 입력해주세요 : ");
-		int no = sc.nextInt();
+		int no = 0;
+		String str = null;
+		System.out.print("***### 회원번호를 입력해주세요 ###***\n\n회원번호를 모를경우 -1을 입력해주세요\n이전 단계로 이동하시려면 -3을 입력해주세요\n입력 : ");
+		while(true) {
+			no = sc.nextInt();
+			if(no == -1) {
+				nameToPrint();
+				System.out.print("회원번호를 입력해주세요 : ");
+			} else if(no == -3) {
+				return;
+			} else {
+				break;
+			}
+		}
 		ArrayList<MemberVO> list = getMno(no);
 		for(MemberVO i : list) {
 			System.out.println();
@@ -120,6 +131,7 @@ public class MemberDao {
 		}
 		
 	}
+
 	
 	// 회원번호와 이름을 산출해주는 함수
 	public ArrayList<MemberVO> getName() {
@@ -382,8 +394,7 @@ public class MemberDao {
  */
 //-----------------------------------------------------------------------------------------------------------
 
-	
-	
+	// 회원정보를 입력하여 등록하는 함수	
 	public ArrayList<MemberVO> isMem(Scanner sc) {
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 		MemberVO mVO = new MemberVO();
