@@ -4,6 +4,7 @@ public class MemberSQL {
 	public final int ALL_MEM		= 1000;
 	public final int SEL_ALL		= 1001;
 	public final int SEL_MNO		= 1002;
+	public final int SEL_ID			= 1003;
 	public final int UP_TEL			= 2001;
 	public final int INSERT_MEM		= 3001;
 
@@ -32,6 +33,14 @@ public class MemberSQL {
 			buff.append("	member ");
 			buff.append("WHERE ");
 			buff.append("	mno = ? ");
+			break;
+		case SEL_ID:
+			buff.append("SELECT ");
+			buff.append("	mno, name, id, pw, mail, avt, gen, joindate ");
+			buff.append("FROM ");
+			buff.append("	member ");
+			buff.append("WHERE ");
+			buff.append("	id = ? ");
 			break;
 		case UP_TEL:
 			buff.append("UPDATE ");

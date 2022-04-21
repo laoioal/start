@@ -568,4 +568,153 @@ public class MemberDao {
 		return form;
 		
 	}
+
+
+//-------------------------------------------------------------------------------------------------------------------------------
+/*
+	문제 ]
+		회원리스트를 꺼내오는데
+		한페이지당 3명의 아이디, 메일, 가입일을 리스트형식으로 보여주고
+		그중에 한명의 아이디를 입력하면
+		그 회원의 상세데이터를 보여주는 기능을 구현하세요
+		
+		한페이지당 보여주는 리스트의 개수는 3개로 하고
+		한페이지당 보여지는 페이지 수는 3개로 한다.
+		이전, 다음페이지를 같이 표현해서
+		이동 가능한 페이지 메뉴는 총 5개로 하세요
+		이전 페이지를 누르면 현재보는 페이지가 5페이지라고 한다면
+		3페이지로 이동을 하고
+		이동가능한 페이지는 1 ~ 3으로 변경되어야 한다.
+		현재 보고는 페이지가 1페이지인데 다음을 선택하면
+		보여지는 페이지는 4페이가 되고
+		종료페이지는 6페이지가 되어야 한다.
+		
+		할일 ]
+			회원리스트 꺼내오는 함수
+			아이디 입력하면 해당 정보 출력해주는 함수
+
+*/
+
+// 아이디 입력하면 해당 정보 출력해주는 함수
+	public ArrayList<MemberVO> setID(String ID) {
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		con = db.getCon();
+		String sql = mSQL.getSQL(mSQL.SEL_ID);
+		pstmt = db.getPstmt(con, sql);
+		try {
+			pstmt.setString(1, ID);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MemberVO mVO = new MemberVO();
+				mVO.setMno(rs.getInt("mno"));
+				mVO.setName(rs.getString("name"));
+				mVO.setId(rs.getString("id"));
+				mVO.setPw(rs.getString("pw"));
+				mVO.setMail(rs.getString("mail"));
+				mVO.setAvt(rs.getInt("avt"));
+				mVO.setGen(rs.getString("gen"));
+				mVO.setHdate(rs.getDate("joindate"));
+				mVO.setHtime(rs.getTime("joindate"));
+				mVO.setSdate();
+				
+				list.add(mVO);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
+	}
+
+// 회원리스트 꺼내오는 함수 아이디, 메일, 가입일
+	public ArrayList<MemberVO> getMember() {
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		con = db.getCon();
+		stmt = db.getStmt(con);
+		String sql = mSQL.getSQL(mSQL.ALL_MEM);
+		try {
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				MemberVO mVO = new MemberVO();
+		
+					
+				mVO.setId(rs.getString("id"));
+				mVO.setMail(rs.getString("mail"));
+				mVO.setHdate(rs.getDate("joindate"));
+				mVO.setHtime(rs.getTime("joindate"));
+				mVO.setSdate();
+				
+				list.add(mVO);
+				
+			}
+			
+		} catch(Exception e) {
+			
+		} finally {
+			db.close(rs);
+			db.close(stmt);
+			db.close(con);
+		}
+		
+		return list;
+	}
+	
+	
+// 3명씩 회원조회해주는 함수
+	public void threeToPrint() {
+		ArrayList<MemberVO> list = getMember();
+		MemberVO mVO = new MemberVO();
+		String[] str = new String[list.size()];
+		for(MemberVO m : list) {
+			String id = m.getId();
+			String mail = m.getMail();
+			String date = m.getSdate();
+			for(int i = 0; i < str.length; i++) {
+				str[i] = id + ", " + mail + ", " +date;
+				System.out.println(i + "번째 정보 : " + str[i]);
+			}
+		}
+		
+		
+		
+		
+		
+//		int b = 1;
+//		loop:
+//		for(int i = 0; i < list.size() ; i++) {
+//		
+//			for(MemberVO m : list) {
+//				String id = m.getId();
+//				String mail = m.getMail();
+//				String date = m.getSdate();
+//				b++;
+//				System.out.println(id + mail + date);
+//				System.out.println("*** "+ i);
+//				System.out.println("*** "+ b);
+//				
+//				if(b == list.size()) {
+//					break loop;
+//				}
+//			}
+//		}
+
+//		int page = 1;
+//		
+//		for(int i = 0; i < list.size(); i++) {
+//			
+//			if((i + 1)%3 == 1) {
+//				page += 1;
+//			}
+//		}
+	}
+	
+	
+	
+	
+	
+
 }	
