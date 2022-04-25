@@ -1,6 +1,8 @@
 package githrd.sql;
 
 public class MemberSQL {
+	public final int MEM_CNT		= 998;
+	public final int MEM_ROW		= 999;
 	public final int ALL_MEM		= 1000;
 	public final int SEL_ALL		= 1001;
 	public final int SEL_MNO		= 1002;
@@ -13,6 +15,30 @@ public class MemberSQL {
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
 		switch(code) {
+		case MEM_CNT:
+			buff.append("SELECT ");
+			buff.append("    count(mno) ");
+			buff.append("FROM ");
+			buff.append("    member ");
+			break;
+		
+		
+		case MEM_ROW:
+			buff.append("SELECT ");
+			buff.append("    mno, name, id, pw, mail, tel, avt, gen, joindate ");
+			buff.append("FROM ");
+			buff.append("    (SELECT ");
+			buff.append("        rownum r, mno, name, id, pw, mail, tel, avt, gen, joindate ");
+			buff.append("    FROM ");
+			buff.append("        (SELECT ");
+			buff.append("            m.mno, m.name, m.id, m.pw, m.mail, m.tel, m.avt, m.gen, m.joindate ");
+			buff.append("        FROM ");
+			buff.append("            member m ");
+			buff.append("        ) ");
+			buff.append("    ) ");
+			buff.append("WHERE ");
+			buff.append("    r = ? ");
+			break;
 		
 		case ALL_MEM:
 			buff.append("SELECT ");

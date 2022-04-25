@@ -14,8 +14,8 @@ public class MemberController {
 	public MemberController() {
 		mDao = new MemberDao();
 		
-/*
 		Scanner sc = new Scanner(System.in);
+		/*
 		boolean bool = true;
 		while(bool) {
 		System.out.println();
@@ -46,9 +46,9 @@ public class MemberController {
 			bool = false;
 			break;
 			}
-		}
+		}ㄷ
 		*/
-		mDao.threeToPrint();
+		mDao.page(sc);
 		
 	}
 		

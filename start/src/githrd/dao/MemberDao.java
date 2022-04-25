@@ -17,7 +17,7 @@ public class MemberDao {
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-
+	int j = 0;
 	public MemberDao() {
 		db = new JenyJDBC();
 		mSQL = new MemberSQL();
@@ -632,25 +632,47 @@ public class MemberDao {
 // 회원리스트 꺼내오는 함수 아이디, 메일, 가입일
 	public ArrayList<MemberVO> getMember() {
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
-		con = db.getCon();
-		stmt = db.getStmt(con);
-		String sql = mSQL.getSQL(mSQL.ALL_MEM);
-		try {
-			rs = stmt.executeQuery(sql);
-			
-			while(rs.next()) {
-				MemberVO mVO = new MemberVO();
+		int cnt = getCnt();
+		int page = 0;
+		if(cnt % 3 != 0) {
+			page = (cnt / 3) + 1;
+		} else {
+			page = cnt / 3;
+		}
 		
-					
-				mVO.setId(rs.getString("id"));
-				mVO.setMail(rs.getString("mail"));
-				mVO.setHdate(rs.getDate("joindate"));
-				mVO.setHtime(rs.getTime("joindate"));
-				mVO.setSdate();
+		con = db.getCon();
+		String sql = mSQL.getSQL(mSQL.MEM_ROW);
+		pstmt = db.getPstmt(con, sql);
+		try {
+			int a = j;
+			loop:
+			for(int q = a; q < page; q++) {
+				int mem = (j  * 3) + 3;
+				int k = j * 3;
+			
+			
+				for(int i = k ; i < mem ; i++) {
+					pstmt.setInt(1, (i + 1));
+					rs = pstmt.executeQuery();
+		
+					while(rs.next()) {
+						MemberVO mVO = new MemberVO();
 				
-				list.add(mVO);
-				
-			}
+						mVO.setId(rs.getString("id"));
+						mVO.setMail(rs.getString("mail"));
+						mVO.setHdate(rs.getDate("joindate"));
+						mVO.setHtime(rs.getTime("joindate"));
+						mVO.setSdate();
+						
+						list.add(mVO);
+						
+						
+					}
+				}
+				break loop;
+			
+		}
+			
 			
 		} catch(Exception e) {
 			
@@ -659,62 +681,101 @@ public class MemberDao {
 			db.close(stmt);
 			db.close(con);
 		}
-		
 		return list;
+		
 	}
+
 	
-	
-// 3명씩 회원조회해주는 함수
-	public void threeToPrint() {
-		ArrayList<MemberVO> list = getMember();
-		MemberVO mVO = new MemberVO();
-		String[] str = new String[list.size()];
-		for(MemberVO m : list) {
-			String id = m.getId();
-			String mail = m.getMail();
-			String date = m.getSdate();
-			for(int i = 0; i < str.length; i++) {
-				str[i] = id + ", " + mail + ", " +date;
-				System.out.println(i + "번째 정보 : " + str[i]);
+	// 회원수 조회하는 함수
+	public int getCnt() {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = mSQL.getSQL(mSQL.MEM_CNT);
+		stmt = db.getStmt(con);
+		try {
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				cnt = rs.getInt("count(mno)");
 			}
+			
+		} catch(Exception e) {
+			
+		} finally {
+			db.close(rs);
+			db.close(stmt);
+			db.close(con);
+			
 		}
 		
-		
-		
-		
-		
-//		int b = 1;
-//		loop:
-//		for(int i = 0; i < list.size() ; i++) {
-//		
-//			for(MemberVO m : list) {
-//				String id = m.getId();
-//				String mail = m.getMail();
-//				String date = m.getSdate();
-//				b++;
-//				System.out.println(id + mail + date);
-//				System.out.println("*** "+ i);
-//				System.out.println("*** "+ b);
-//				
-//				if(b == list.size()) {
-//					break loop;
-//				}
-//			}
-//		}
+		return cnt;
+	}
 
-//		int page = 1;
-//		
-//		for(int i = 0; i < list.size(); i++) {
-//			
-//			if((i + 1)%3 == 1) {
-//				page += 1;
-//			}
-//		}
+	
+	
+	
+	
+	// 회원 3명씩 출력해주는 함수
+	public void threeMemToPring(String str) {
+		ArrayList<MemberVO> list = getMember();
+	
+		for(MemberVO i : list) {
+			System.out.println("---------------------------------회원정보---------------------------------");
+			System.out.print("아이디 : " + i.getId() + "\n메일 : " + i.getMail() + "\n가입일 : " + i.getSdate() + "\n");
+			System.out.println("--------------------------------------------------------------------------");
+			System.out.println();
+		}
+		
+	}
+	// 아이디 입력하면 출력해주는 함수
+	public void getId(String str) {
+		ArrayList<MemberVO> list = setID(str);
+		
+		for(MemberVO i : list) {
+			System.out.println("---------------------------------회원정보---------------------------------");
+			System.out.printf("회원번호 : %-4d\n이름 : %-7s\n아이디 : %-7s\n비밀번호 : %-10s\n메일 : %-20s\n아바타 : %-2d\n성별 : %-1s\n가입일 : %-22s\n\n", i.getMno(), i.getName(), i.getId(), i.getPw(), i.getMail(), i.getAvt(), i.getGen(), i.getSdate());
+			System.out.println("--------------------------------------------------------------------------");
+			System.out.println();
+		}
+		
 	}
 	
 	
-	
-	
+	// 페이지 넘기는 함수
+	public String page(Scanner sc) {
+		threeMemToPring("시작");
+		System.out.println("******************* " + (j + 1) + "페이지 *******************");
+		System.out.println();
+		String page = null;
+		int cnt = 0;
+		if(getCnt() % 3 != 0) {
+			cnt = getCnt() / 3 + 1;
+		} else {
+			cnt = getCnt() / 3;
+		}
+		while(true) {
+			System.out.print("다음 회원을 조회하시려면 \"다음\"을 이전 회원을 조회하시려면 \"이전\"을 프로그램을 종료하시려면 \"종료\"를 입력해주세요\n회원 상세조회를 하시려면 아이디를 입력해주세요.\n입력 : ");
+			page = sc.nextLine();
+			if(page.equals("다음")) {
+				j += 1;
+				threeMemToPring("다음");
+				System.out.println("******************* " + (j + 1) + "페이지 *******************" );
+				System.out.println();
+			} else if(page.equals("이전")) {
+				j -= 1;
+				threeMemToPring("이전");
+				System.out.println("******************* " + (j + 1) + "페이지 *******************");
+				System.out.println();
+			} else if(page.equals("종료")) {
+				System.out.println("프로그램을 종료합니다.");
+				break;
+			} else { 
+				getId(page);
+			}
+
+		}
+		return page;
+		
+	}
 	
 
 }	

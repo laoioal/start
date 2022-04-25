@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MemberVO {
-	private int mno, avt;
+	private int mno, avt, num;
 	private String name, id, pw, mail, tel, gen, sdate;
 	private Date hdate;
 	private Time htime;
@@ -21,6 +21,12 @@ public class MemberVO {
 	}
 	public void setAvt(int avt) {
 		this.avt = avt;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
 	}
 	public String getName() {
 		return name;
