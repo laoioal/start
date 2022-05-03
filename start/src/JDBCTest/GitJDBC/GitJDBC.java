@@ -14,7 +14,7 @@ public class GitJDBC {
 	public Connection getCon() {
 		Connection con = null;
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String id = "githrd";
+		String id = "githrd";//
 		String pw = "12345";
 		try {
 			con = DriverManager.getConnection(url, id, pw);
@@ -36,7 +36,7 @@ public class GitJDBC {
 	public void close(Object o) {
 			try {
 				if(o instanceof Connection) {
-				((Connection) o).close();
+					((Connection) o).close();
 				} else if(o instanceof PreparedStatement) {
 					((PreparedStatement) o).close();
 				}

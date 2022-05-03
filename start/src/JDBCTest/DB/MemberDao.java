@@ -29,14 +29,10 @@ public class MemberDao {
 		try {
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				
-				mVO.setId(rs.getString("id"));
-				mVO.setName(rs.getString("name"));
-				mVO.setMail(rs.getString("mail"));
-				
-
-			}
+			rs.next();
+			mVO.setId(rs.getString("id"));
+			mVO.setName(rs.getString("name"));
+			mVO.setMail(rs.getString("mail"));
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
