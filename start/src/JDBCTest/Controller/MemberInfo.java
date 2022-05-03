@@ -4,6 +4,7 @@ package JDBCTest.Controller;
 import java.util.*;
 
 import JDBCTest.DB.MemberDao;
+import githrd.vo.MemberVO;
 
 public class MemberInfo {
 	MemberDao mDao;
@@ -17,7 +18,8 @@ public class MemberInfo {
 				System.out.println("\n*** 프로그램 종료 ***");
 				break;
 			}
-			mDao.toPring(no);
+			MemberVO mVO = mDao.setMno(no);
+			System.out.print("\n아이디 : " + mVO.getId() + "\n회원이름 : " + mVO.getName() + "\n이메일 : " + mVO.getMail() + "\n\n");
 			
 		}
 	}
